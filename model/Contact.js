@@ -1,6 +1,6 @@
 const  mongoose= require("mongoose");
-const schema=mongoose.Schema
-const contactSchema=new schema({
+const {Schema}=mongoose
+const contactSchema=new Schema({
     name:{type:String,required:true},
     email:{type:String,required:true,unique:true},
     age:Number

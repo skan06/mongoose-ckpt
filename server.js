@@ -1,4 +1,4 @@
-// 1 Impotation express
+// 1 Importation express
 const express = require("express");
 // 2 Creation App
 const app=express()
@@ -9,7 +9,7 @@ const connectdata=require("./config/connectdb")
 connectdata()
 // 3 Creation port
 const port=process.env.PORT
-// 9 Middleware
+// 8 Middleware
 app.use(express.json())
 // 7 Creation of route global
 app.use("/api/contacts",require("./Routes/contact"))

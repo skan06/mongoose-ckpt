@@ -34,5 +34,57 @@ router.post("/add",async(req,res)=>{
         res.status(400).send({msg:"contact matzedech",error})
     }
 })
+/* post:get all
+ * path:http://localhost:1100/api/contacts/
+ *  
+*/ 
+router.get("/",async(req,res)=>{
+    try {
+        const contactlist=await Contact.find()
+        res.status(200).send({msg:"This is our list",contactlist})
+    } catch (error) {
+        res.status(400).send({msg:"There's no list",error})
+    }
+})
+/* post:get one
+ * path:http://localhost:1100/api/contacts/:_id
+ * req.params 
+*/ 
+router.get("/:_id",async(req,res)=>{
+    try {
+        const {_id}=req.params;
+        let contactToGet= await Contact.findOne({_id})
+        res.status(200).send({msg:"This is our contact",contactToGet})
+    } catch (error) {
+        res.status(400).send({msg:"Contact unavailable",error})
+    }
+})
+/* post:update
+ * path:http://localhost:1100/api/contacts/edit/:_id
+ * req.params && req.body
+*/ 
+router.put("/edit/:_id",async (req,res)=>{
+try {
+    let {name,email,age}=req.body;
+    let {_id}=req.params
+    await Contact.updateOne({_id},{$set:{...req.body}})
+    res.status(200).send({msg:"Seccessful update"})
+} catch (error) {
+    res.status(400).send({msg:"Update failed",error})
+}
+})
+/* post:delete
+ * path:http://localhost:1100/api/contacts/delete/:_id
+ * req.params
+*/ 
+router.delete("/delete/:_id",async (req,res)=>{
+    try {
+        let {_id}=req.params;
+        await Contact.deleteOne({_id})
+        res.status(200).send({msg:"Contact deleted"})
+    } catch (error) {
+        res.status(400).send({msg:"Contact not deleted",error})
+    }
+})
 
 module.exports=router
