@@ -12,9 +12,11 @@ const ContactList = () => {
     },[dispatch]);
     
   return (
-    <div>
-            <h3>list</h3>
+    <div className='cnt'>
+    <h1>Contact list</h1>
+    <div className='crd'>
             {load?(<p>loading...</p>):(list?.map(el=><ContactCard list={el}/>))}
+    </div>
     </div>
   )
 }

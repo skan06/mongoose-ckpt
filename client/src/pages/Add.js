@@ -20,9 +20,9 @@ const Add = () => {
         <label htmlFor="name">Name</label>
         <input type="text" name="name" placeholder="write your name" onChange={handleChange}/>
         <label htmlFor="email">Email</label>
-        <input type="text" email="lastname" placeholder="Write your email" onChange={handleChange}/>
+        <input type="text" name="email" placeholder="Write your email" onChange={handleChange}/>
         <label htmlFor="age">Age</label>
-        <input type="text" id="lname" age="age" placeholder="Write your age" onChange={handleChange}/>
+        <input type="text" id="lname" name="age" placeholder="Write your age" onChange={handleChange}/>
         <button type="submit" value="Submit" onClick={handleAdd}>Add</button>
       </form>
     </div>

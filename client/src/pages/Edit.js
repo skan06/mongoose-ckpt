@@ -13,7 +13,7 @@ const Edit = () => {
   }
   useEffect(() => {
     dispatch(getOne(params.id))
-  }, [])
+  }, [dispatch,params.id])
   const load=useSelector(state=>state.contactReducer.load);
   const contactToGet=useSelector(state=>state.contactReducer.contactToGet)
   const handleEdit=()=>{
@@ -33,9 +33,9 @@ const Edit = () => {
         <label htmlFor="name">Name</label>
         <input type="text" name="name" placeholder={`${contactToGet.name}`} onChange={handleChange}/>
         <label htmlFor="email">Email</label>
-        <input type="text" email="lastname" placeholder={`${contactToGet.email}`} onChange={handleChange}/>
+        <input type="text" name="email" placeholder={`${contactToGet.email}`} onChange={handleChange}/>
         <label htmlFor="age">Age</label>
-        <input type="text" id="lname" age="age" placeholder={`${contactToGet.age}`} onChange={handleChange}/>
+        <input type="text" name="age" placeholder={`${contactToGet.age}`} onChange={handleChange}/>
         <button onClick={handleEdit}>Edit</button>
       </form>
     </div>
